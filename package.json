@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+    "dev": "npm run build && concurrently --names \"next, shuttle\" --kill-others \"next dev\" \"cargo shuttle run --working-directory ./backend/ --port 9999\"",
+    "build": "next build && next export -o ./backend/static && cargo build --manifest-path ./backend/Cargo.toml",
+    "start": "cargo shuttle project new --working-directory ./backend/",
+    "lint": "next lint",
+    "shuttle-login": "cargo shuttle login --working-directory ./backend/",
+    "deploy": "npm run build && cargo shuttle deploy --working-directory ./backend/ --allow-dirty",
+    "stop": "cargo shuttle project rm --working-directory ./backend/"
+},
   "dependencies": {
     "@next/font": "13.4.19",
     "@types/node": "20.6.2",

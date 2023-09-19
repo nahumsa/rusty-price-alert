@@ -1,37 +1,51 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Inter } from '@next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
   return (
     <>
-      <header className="flex justify-between items-center mb-4">
-        <h1 className="text-3xl">Alerta de preços para o site Madeira Madeira</h1>
+      <header className="flex justify-center my-4">
+        <h1 className="text-center text-2xl font-bold mb-5">Alerta de preços para o site Madeira Madeira</h1>
       </header>
-       <div>
-      <form method="POST" action="https://www.formbackend.com/f/664decaabbf1c319">
-        <div>
-          <label>Link para o produto:</label>
-          <input type="text" name="name" />
-        </div>
+      <div className="flex h-screen justify-center shadow-lg">
+        <form method="POST" action="https://www.formbackend.com/">
+          <div className="mb-4">
+            <label htmlFor="product" className="block text-white-700 font-bold mb-2">Link para o produto</label>
+            <input
+              type="text"
+              id="product"
+              name="product"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
+              placeholder="https://www.madeiramadeira.com.br"
+            />
+          </div>
 
-        <div>
-          <label>Email</label>
-          <input type="text" name="email" />
-        </div>
+          <div className='mb-4'>
+            <label htmlFor="email" className="block text-white-700 font-bold mb-2">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
+              placeholder="seu@email.com" 
+            />
+          </div>
 
-        <div>
-          <label>Preço para alertar</label>
-          <input name="message"></input>
-        </div>
+          <div className='mb-4'>
+            <label htmlFor="price" className="block text-white-700 font-bold mb-2">Preço mínimo para alertar</label>
+            <input
+              type="number"
+              id="price"
+              name="price"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500 text-black"
+              placeholder="R$ 100,00"
+            >
+            </input>
+          </div>
 
-        <button
-            className="border border-slate-300 text-slate-300 px-2 py-1 rounded hover:bg-slate-700 focus-within:bg-slate-700 outline-none"
-            type="submit">Registrar</button>
-      </form>
+          <div className='flex justify-center'>
+          <button
+              className="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+              type="submit">Registrar</button>
+          </div>
+        </form>
     </div>
     </>
   )
